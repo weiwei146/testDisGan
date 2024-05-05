@@ -349,7 +349,7 @@ if __name__ == '__main__':
                 opt.gpu_ids.append(id)
 
     module = Modules(opt.input_nc, opt.output_nc, opt.num_classes, opt.model_name)
-    module.init_modules(opt.cuda, opt.gpu_ids)
+    module.init_modules(True, [0])
 
     state_dict = torch.load(opt.aux_classifier)
     new_state_dict = OrderedDict()

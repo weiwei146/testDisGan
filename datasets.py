@@ -11,8 +11,10 @@ from torch.utils.data import Dataset, DataLoader
 class ImageDataset(Dataset):
     def __init__(self, root, transforms_=None, mode='train'):
         self.transform = transforms.Compose(transforms_)
-        self.files_A = sorted(glob.glob(os.path.join(root, '%s/X' % mode) + '/*.*'))
-        self.files_B = sorted(glob.glob(os.path.join(root, '%s/Y' % mode) + '/*.*'))
+        # self.files_A = sorted(glob.glob(os.path.join(root, '%s/X' % mode) + '/*.*'))
+        # self.files_B = sorted(glob.glob(os.path.join(root, '%s/Y' % mode) + '/*.*'))
+        self.files_A = sorted(glob.glob(os.path.join('/content/testDisGan/covid_ct', '%s/X' % mode) + '/*.*'))
+        self.files_B = sorted(glob.glob(os.path.join('/content/testDisGan/covid_ct', '%s/Y' % mode) + '/*.*'))
 
     def __getitem__(self, index):
         A_path = self.files_A[index % len(self.files_A)]
